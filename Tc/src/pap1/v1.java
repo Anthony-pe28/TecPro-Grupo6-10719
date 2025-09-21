@@ -101,6 +101,7 @@ public class v1 extends JFrame implements ActionListener {
 		contentPane.add(scrollPane);
 		
 		txts = new JTextArea();
+		txts.setEditable(false);
 		scrollPane.setViewportView(txts);
 		
 		cboxtall = new JComboBox<String>();
@@ -159,13 +160,25 @@ public class v1 extends JFrame implements ActionListener {
 	}
 	
 	String LeerTalla () {
-		return cboxtall.getSelectedItem().toString();
+			return cboxtall.getSelectedItem().toString();			
 	}
 	int LeerCant () {
-		return Integer.parseInt(txtCant.getText());
+		try {
+			return Integer.parseInt(txtCant.getText());			
+		} catch (NumberFormatException e){
+			JOptionPane.showMessageDialog(this, "Cantidad inválida");
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, "Error inesperado");
+		} return 0;
 	}
 	double LeerPrec () {
-		return Double.parseDouble(txtPrec.getText());
+		try {
+			return Double.parseDouble(txtPrec.getText());
+		} catch (NumberFormatException e){
+			JOptionPane.showMessageDialog(this, "Precio inválido");
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, "Error inesperado");
+		} return 0;
 	}
 	String LeerRopa () {
 		return cboxRop.getSelectedItem().toString();
